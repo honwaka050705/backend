@@ -12,14 +12,16 @@ module Types
       Year.all
     end
 
-    field :to_ad, Integer, null: false do
+    field :to_ad, String, null: false do
       argument :emperor, String, required: true
       argument :nippons_year, String, required: true
     end
     def to_ad(emperor:, nippons_year:)
-      emperor
+      return "" if (emperor.empty? || nippons_year.empty?)
+
       year = Year.find_by(generation: emperor.to_i)
-      year[:ad] + nippons_year.to_i - 1
+      (year[:ad] + nippons_year.to_i - 1).to_s
+
     end
     # TODO: remove me
     field :test_field, String, null: false,
