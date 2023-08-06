@@ -11,6 +11,18 @@ module Types
     def years
       Year.all
     end
+
+    field :to_ad, String, null: false do
+      argument :emperor, String, required: true
+      argument :nippons_year, String, required: true
+    end
+    def to_ad(emperor:, nippons_year:)
+      return "" if (emperor.empty? || nippons_year.empty?)
+
+      year = Year.find_by(generation: emperor.to_i)
+      (year[:ad] + nippons_year.to_i - 1).to_s
+
+    end
     # TODO: remove me
     field :test_field, String, null: false,
       description: "An example field added by the generator"
