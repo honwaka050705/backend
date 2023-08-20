@@ -5,6 +5,7 @@ module Types
     field :id, ID, null: false
     field :generation, Integer, null: false
     field :emperor_name, String, null: false
-    field :ad, Integer, null: false
+    field :ad_enthronement_at, GraphQL::Types::ISO8601Date, null: false
+    field :ad_abdication_at, GraphQL::Types::ISO8601Date, null: false
   end
 end

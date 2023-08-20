@@ -3,6 +3,7 @@ module Types
     # Add `node(id: ID!) and `nodes(ids: [ID!]!)`
     include GraphQL::Types::Relay::HasNodeField
     include GraphQL::Types::Relay::HasNodesField
+    include Calendar::NipponWestern
 
     # Add root-level fields here.
     # They will be entry points for queries on your schema.
@@ -18,10 +19,8 @@ module Types
     end
     def to_ad(emperor:, nippons_year:)
       return "" if (emperor.empty? || nippons_year.empty?)
-
       year = Year.find_by(generation: emperor.to_i)
-      (year[:ad] + nippons_year.to_i - 1).to_s
-
+      nippon_to_western(year[:ad_enthronement_at].strftime('%Y'), nippons_year)
     end
     # TODO: remove me
     field :test_field, String, null: false,
