@@ -1,24 +1,15 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## GraphQL
+- ローカルアクセスURL
+  - http://localhost:3001/graphiql 
+- graphql-rubyの型について
+  - https://graphql-ruby.org/api-doc/2.0.11/GraphQL/Types.html
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## 開発中のデバッグ
+- Gem debugを使用している。
+- ブレークポイントの記述(以下どれでもOK)
+  - debugger
+  - binding.break
+  - binding.b
+- [参考サイト](https://zenn.dev/igaiga/books/rails-practice-note/viewer/ruby_rails_debug_gem)
