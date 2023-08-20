@@ -14,6 +14,7 @@ default: &default
   encoding: utf8mb4
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
+  password: <%= ENV.fetch("GRAPH_DB_PASS") { '' } %> 
   host: db
 
 development:
@@ -50,5 +51,5 @@ test:
 production:
   <<: *default
   database: api_production
-  username: api
+  username: <%= ENV["DB_API_USER"] %>
   password: <%= ENV["API_DATABASE_PASSWORD"] %>
